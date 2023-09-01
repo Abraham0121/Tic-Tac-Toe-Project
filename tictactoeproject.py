@@ -14,15 +14,6 @@ board = [
     ['', '', ''],
     ['', '', '']
 ]
-"""def draw_board(board):
-    for i in range(3):
-        for j in range(3):
-            pygame.draw.rect(screen, (255, 255, 255), pygame.Rect(j * 100, i * 100, 100, 100), 3)
-            if board[i][j] == 'X':
-                pygame.draw.line(screen, (0, 0, 0), (j * 100 + 20, i * 100 + 20), (j * 100 + 80, i * 100 + 80), 2)
-                pygame.draw.line(screen, (0, 0, 0), (j * 100 + 20, i * 100 + 80), (j * 100 + 80, i * 100 + 20), 2)
-            elif board[i][j] == 'O':
-                pygame.draw.circle(screen, (0, 0, 0), (j * 100 + 50, i * 100 + 50), 40, 2)"""
 
 
 
@@ -36,6 +27,8 @@ def draw_board(board):
         pygame.draw.line(screen, (0, 0, 0), (start_x, start_y + i * CELL_SIZE), (start_x + CELL_SIZE * GRID_SIZE, start_y + i * CELL_SIZE), 3)
         pygame.draw.line(screen, (0, 0, 0), (start_x + i * CELL_SIZE, start_y), (start_x + i * CELL_SIZE, start_y + CELL_SIZE * GRID_SIZE), 3)
 
+
+    # This bit of code is responsible for drawing the X's and the O's 
     for i in range(GRID_SIZE):
         for j in range(GRID_SIZE):
             if board[i][j] == 'X':
@@ -51,7 +44,7 @@ def draw_board(board):
 
 
 
-def take_input():
+def take_input(): 
     row = int(input('Enter row (1-3): ')) - 1
     column = int(input('Enter column (1-3): ')) - 1
     return row, column
@@ -156,8 +149,7 @@ def main():
         screen.blit(player_text, (10, 10))  # Adjust the position as needed
 
 
-        #new_game_text = font.render("Would you like to play another game?", True, (0,0,0))
-        #screen.blit(new_game_text, )
+
 
 
         draw_board(board)  # Draw the current state of the board
