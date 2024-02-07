@@ -94,8 +94,6 @@ def display_winner(current_player, font):
     pygame.time.wait(2000)  # Pause for a few seconds to show the result
 
 
-
-
 def is_board_full(board):
     i = 0
     j = 0
@@ -105,7 +103,59 @@ def is_board_full(board):
                 return False
     return True
 
-def main():
+def choose_game_mode():
+
+    while True:
+        game_mode = input("Please choose which mode you would like to play in (single/multi)":).lower()
+
+        if game_mode in ["single", "multi"]:
+            return game_mode
+        else:
+            print("Invalid input. Please input 'single' or 'multi'.")    
+
+
+def play_single_player():
+    """
+    Covers the Player vs. AI logic. 
+    Necessary subfunctions: 
+    Choosing 'X' or 'O'; First and Second respectively,
+    Choosing difficulty of AI; Easy, Medium, or Hard,
+
+    """
+    def choose_move_order():
+        while True:
+            move_order = input("Please choose which you would like to go 'X' or 'O'. They are first and second respectively.")
+
+            if move_order in ['X', 'O']:
+                return move_order
+            else:
+                print("Please input 'X' or 'O'. Your previous input was invalid.")
+    
+    def choose_difficulty():
+        while True:
+            difficulty = input("Please input your desired difficulty from your opponent (easy/medium/hard).").lower()
+
+            if difficulty in ['easy', 'medium', 'hard']:
+                return difficulty
+            else:
+                print("Please type in your choice between 'easy', 'medium', or 'hard'. Any other input is invalid.")
+
+    board = [[' ' for _ in range(3)]for _ in range(3)]
+    current_player = 'X'
+
+    font = pygame.font.Font(None, 36)
+
+    game = True
+    while game:
+        player = choose_move_order()
+
+        if current_player == player:
+            
+
+
+    pass
+
+def play_multi_player():
     board = [[' ' for _ in range(3)]for _ in range(3)]
     current_player = 'X'
 
@@ -156,6 +206,12 @@ def main():
         pygame.display.flip()  # Update the display
 
 
+def main():
+    game_mode = choose_game_mode
+    if game_mode == "single":
+        play_single_player()
+    else:
+        play_multi_player()
 
 
 main()
